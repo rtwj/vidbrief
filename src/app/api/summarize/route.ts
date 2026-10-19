@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { extractVideoId } from "@/lib/video";
+import { extractVideoId } from "@/app/shared/video";
 import {
   buildTimestampedTranscript,
   fetchTranscript,
   type Transcript,
-} from "@/lib/youtube";
+} from "@/app/api/youtube";
 
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;

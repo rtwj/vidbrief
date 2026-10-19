@@ -1,6 +1,6 @@
 "use client";
 
-import { Spinner } from "@/components/SearchBar";
+import { Spinner } from "@/app/ui/SearchBar";
 
 function SkeletonCard({ children }: { children: React.ReactNode }) {
   return (

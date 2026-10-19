@@ -1,5 +1,5 @@
 import { YoutubeTranscript } from "youtube-transcript";
-import { formatTimestamp } from "@/lib/time";
+import { formatTimestamp } from "@/app/shared/time";
 
 export interface TranscriptSegment {
   /** Start offset in seconds. */

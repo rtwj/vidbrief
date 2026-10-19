@@ -1,13 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { SummarySkeleton, TranscriptSkeleton } from "@/components/LoadingResults";
-import SearchBar from "@/components/SearchBar";
-import SiteHeader from "@/components/SiteHeader";
-import SummaryPanel from "@/components/SummaryPanel";
-import TranscriptPanel from "@/components/TranscriptPanel";
-import VideoPanel from "@/components/VideoPanel";
-import { extractVideoId } from "@/lib/video";
+import { SummarySkeleton, TranscriptSkeleton } from "@/app/ui/LoadingResults";
+import SearchBar from "@/app/ui/SearchBar";
+import SiteHeader from "@/app/ui/SiteHeader";
+import SummaryPanel from "@/app/ui/SummaryPanel";
+import TranscriptPanel from "@/app/ui/TranscriptPanel";
+import VideoPanel from "@/app/ui/VideoPanel";
+import { extractVideoId } from "@/app/shared/video";
 
 interface SummaryResponse {
   summary: string;

@@ -1,6 +1,6 @@
 "use client";
 
-import SummaryContent, { type SeekHandler } from "@/components/SummaryContent";
+import SummaryContent, { type SeekHandler } from "@/app/ui/SummaryContent";
 
 function providerLabel(provider: string): string {
   if (provider === "openrouter") return "OpenRouter";

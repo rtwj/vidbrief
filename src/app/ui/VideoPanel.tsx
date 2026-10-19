@@ -1,7 +1,7 @@
 "use client";
 
 import type { RefObject } from "react";
-import { youtubeWatchUrl } from "@/lib/time";
+import { youtubeWatchUrl } from "@/app/shared/time";
 
 export default function VideoPanel({
   videoId,

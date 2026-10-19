@@ -1,4 +1,4 @@
-import ThemeToggle from "@/components/ThemeToggle";
+import ThemeToggle from "@/app/ui/ThemeToggle";
 
 export default function SiteHeader() {
   return (

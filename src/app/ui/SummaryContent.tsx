@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { parseTimestamp } from "@/lib/time";
+import { parseTimestamp } from "@/app/shared/time";
 
 export type SeekHandler = (seconds: number) => void;
 

@@ -133,38 +133,34 @@ Pre-flight failures return plain JSON instead:
 
 Failures that happen after streaming has begun (no transcript, all models unavailable) arrive as in-stream `error` events, because the response status has already been sent.
 
-### `GET /api/health`
-
-```json
-{ "status": "ok" }
-```
-
 ---
 
 ## Project structure
 
 ```
 src/
-├── app/
-│   ├── api/summarize/route.ts   Streaming NDJSON endpoint, provider chain, prompt
-│   ├── api/health/route.ts      Health check
-│   ├── globals.css              Tailwind import, theme tokens, scrollbars
-│   ├── layout.tsx               Fonts (Geist), no-flash theme script, metadata
-│   └── page.tsx                 Client orchestrator: stream reader, progress, seek
-├── components/
-│   ├── SiteHeader.tsx           Sticky header: logo, brand, theme toggle
-│   ├── ThemeToggle.tsx          Light/dark toggle (class on <html>, persisted)
-│   ├── SearchBar.tsx            URL input + inline button + spinner/percentage
-│   ├── LoadingResults.tsx       Transcript/summary skeletons, progress bar
-│   ├── VideoPanel.tsx           Embedded player, embeddability fallback
-│   ├── TranscriptPanel.tsx      Scrollable transcript
-│   ├── SummaryPanel.tsx         Summary card and provenance footer
-│   └── SummaryContent.tsx       Markdown renderer with clickable timestamps
-└── lib/
-    ├── youtube.ts               Transcript fetch, timestamped blocks
-    ├── video.ts                 YouTube URL -> video id (shared client/server)
-    └── time.ts                  MM:SS formatting/parsing, watch URLs
+└── app/
+    ├── api/                         Backend code
+    │   ├── summarize/route.ts       Streaming NDJSON endpoint, provider chain, prompt
+    │   └── youtube.ts               Transcript fetch, timestamped blocks
+    ├── ui/                          Frontend components
+    │   ├── SiteHeader.tsx           Sticky header: logo, brand, theme toggle
+    │   ├── ThemeToggle.tsx          Light/dark toggle (class on <html>, persisted)
+    │   ├── SearchBar.tsx            URL input + inline button + spinner/percentage
+    │   ├── LoadingResults.tsx       Transcript/summary skeletons, progress bar
+    │   ├── VideoPanel.tsx           Embedded player, embeddability fallback
+    │   ├── TranscriptPanel.tsx      Scrollable transcript
+    │   ├── SummaryPanel.tsx         Summary card and provenance footer
+    │   └── SummaryContent.tsx       Markdown renderer with clickable timestamps
+    ├── shared/                      Code used by both client and server
+    │   ├── video.ts                 YouTube URL -> video id
+    │   └── time.ts                  MM:SS formatting/parsing, watch URLs
+    ├── globals.css                  Tailwind import, theme tokens, scrollbars
+    ├── layout.tsx                   Fonts (Geist), no-flash theme script, metadata
+    └── page.tsx                     Client orchestrator: stream reader, progress, seek
 ```
+
+Colocated folders without a `page`/`route` file (`ui/`, `shared/`) are never routable — Next.js only exposes `app/api/*/route.ts` as endpoints.
 
 No extra dependencies were added for Markdown rendering: `SummaryContent.tsx` is a small, tolerant parser for headings, bullets, ordered lists, bold, code, and timestamps. It degrades to paragraphs if a model ignores the format.
 
